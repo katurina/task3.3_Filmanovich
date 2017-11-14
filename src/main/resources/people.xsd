@@ -1,0 +1,31 @@
+<xsd:schema xmlns="http://www.w3.org/2001/XMLSchema"
+            xmlns:xsd="http://www.w3.org/2001/XMLSchema"
+            targetNamespace="http://epam.training.by/people"
+            xmlns:tns="http://epam.training.by/people">
+    <xsd:element name="people">
+        <xsd:complexType>
+            <xsd:sequence>
+                <xsd:element name="person"
+                             type="tns:Person"/>
+            </xsd:sequence>
+        </xsd:complexType>
+    </xsd:element>
+    <xsd:complexType name="Person">
+        <xsd:sequence>
+            <xsd:element name="name" type="string"/> <!--type="tns:NameString"/>-->
+            <xsd:element name="surname" type="string"/><!--type="tns:NameString"/>-->
+            <xsd:element name="telephone" type="string"/><!--type="string"/>-->
+            <xsd:element name="email" type="string"/><!--type="tns:EmailString"/>-->
+        </xsd:sequence>
+    </xsd:complexType>
+    <!--<xsd:simpleType name="NameString">-->
+    <!--<xsd:restriction base="string">-->
+    <!--<xsd:pattern value="[A-Za-z]*"/>-->
+    <!--</xsd:restriction>-->
+    <!--</xsd:simpleType>-->
+    <!--<xsd:simpleType name="EmailString">-->
+    <!--<xsd:restriction base="string">-->
+    <!--<xsd:pattern value="[a-zA-Z0-9]*@[a-zA-Z0-9]*\.[a-zA-Z0-9]*"/>-->
+    <!--</xsd:restriction>-->
+    <!--</xsd:simpleType>-->
+</xsd:schema>

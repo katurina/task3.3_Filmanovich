@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<people xmlns:xsd="http://www.w3.org/2001/XMLSchema-instance"
+         xmlns="http://epam.training.by/people"
+         xsd:schemaLocation="http://epam.training.by/people people.xsd">
+    <person>
+        <name>Ivan</name>
+        <surname>Ivanov</surname>
+        <telephone>+375363968524</telephone>
+        <email>ivanov@a.a</email>
+    </person>
+    <person>
+        <name>Bob</name>
+        <surname>Petrov</surname>
+        <telephone>+375869514586</telephone>
+        <email>bob@s.com</email>
+    </person>
+    <person>
+        <name>Linda</name>
+        <surname>Sidorava</surname>
+        <telephone>+375696854212</telephone>
+        <email>linda@lin.da</email>
+    </person>
+    <person>
+        <name>Willim</name>
+        <surname>Black</surname>
+        <telephone>+375896542342</telephone>
+        <email>will@black.a</email>
+    </person>
+    <person>
+        <name>Mark</name>
+        <surname>Fry</surname>
+        <telephone>+375 29 68 598 25</telephone>
+        <email>mark@gmail.com</email>
+    </person>
+    <person>
+        <name>Ella</name>
+        <surname>White</surname>
+        <telephone>+375 89 698 52 54</telephone>
+        <email>white@gmail.com</email>
+    </person>
+    <person>
+        <name>Stive</name>
+        <surname>Suite</surname>
+        <telephone>+375 29 368 52 54</telephone>
+        <email>suieer@gmail.com</email>
+    </person>
+    <person>
+        <name>Rimma</name>
+        <surname>Fry</surname>
+        <telephone>+375 33 687 45 12</telephone>
+        <email>grey@gmail.com</email>
+    </person>
+    <person>
+        <name>Kira</name>
+        <surname>Krushtail</surname>
+        <telephone>+375 39 365 32 23</telephone>
+        <email>krushtail.kira@gmail.com</email>
+    </person>
+    <person>
+        <name>Mirk</name>
+        <surname>Morisons</surname>
+        <telephone>+375 33 21 12 152</telephone>
+        <email>maison@g.com</email>
+    </person>
+</people>
