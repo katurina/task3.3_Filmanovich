@@ -11,8 +11,16 @@
         <servlet-name>controller</servlet-name>
         <url-pattern>/controller</url-pattern>
     </servlet-mapping>
-    <error-page>
-        <error-code>500</error-code>
-        <location>/error.html</location>
-    </error-page>
+    <servlet>
+        <servlet-name>xmlViewer</servlet-name>
+        <jsp-file>/WEB-INF/xmlViewer.jsp</jsp-file>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>xmlViewer</servlet-name>
+        <url-pattern>/xmlViewer</url-pattern>
+    </servlet-mapping>
+    <!--<error-page>-->
+        <!--<error-code>500</error-code>-->
+        <!--<location>/error.html</location>-->
+    <!--</error-page>-->
 </web-app>
