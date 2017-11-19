@@ -1,6 +1,5 @@
 package by.epam.tr.controller;
 
-
 import by.epam.tr.entity.Person;
 import by.epam.tr.service.Service;
 import by.epam.tr.service.ServiceFactory;
@@ -18,6 +17,12 @@ import java.util.List;
 public class Controller extends HttpServlet {
 
     private static final String PARSER_KIND = "parser";
+    private static final String PAGE = "page";
+    private static final String NUMBER_OF_PAGES = "numberOfPages";
+    private static final String CURRENT_PAGE = "currentPage";
+    private static final String LIST = "list";
+    private static final String XML_VIEWER = "xmlViewer";
+
     private int offset;
     private int length;
     private List<Person> list;
@@ -28,7 +33,7 @@ public class Controller extends HttpServlet {
         int maxEntriesPerPage = 5;
         int currentPage = 1;
 
-        String pageNumberValue = request.getParameter("page");
+        String pageNumberValue = request.getParameter(PAGE);
         parserParam = request.getParameter(PARSER_KIND);
 
         if (pageNumberValue != null) {
@@ -43,11 +48,11 @@ public class Controller extends HttpServlet {
         this.length = maxEntriesPerPage;
         getList();
 
-        request.setAttribute("numberOfPages", getPage());
-        request.setAttribute("currentPage", currentPage);
-        request.setAttribute("list", getListByOffsetAndLength());
+        request.setAttribute(NUMBER_OF_PAGES, getPage());
+        request.setAttribute(CURRENT_PAGE, currentPage);
+        request.setAttribute(LIST, getListByOffsetAndLength());
 
-        RequestDispatcher dispatcher = request.getRequestDispatcher("xmlViewer");
+        RequestDispatcher dispatcher = request.getRequestDispatcher(XML_VIEWER);
         try {
             dispatcher.forward(request, response);
         } catch (ServletException | IOException e) {
