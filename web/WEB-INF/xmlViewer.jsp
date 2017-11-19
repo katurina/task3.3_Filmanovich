@@ -10,7 +10,7 @@
 <body>
 <div style="text-align: center;">
     <table border="1">
-        <c:forEach items="${requestScope.list}" var="item">
+        <c:forEach items="${requestScope.list.entity}" var="item">
             <tr>
                 <td>${item.id}</td>
                 <td>${item.name}</td>
@@ -22,49 +22,57 @@
     </table>
     <br>
     <br>
-    <form method="get" action="${pageContext.request.contextPath}/controller">
-        <a href="${pageContext.request.contextPath}/controller?page=1">1</a>
-        <c:choose>
-            <c:when test="${requestScope.currentPage eq 1}">
-                <a href="${pageContext.request.contextPath}/controller?page=2">2</a>...
-            </c:when>
-            <c:otherwise>
-                <c:choose>
-                    <c:when test="${requestScope.currentPage eq 2}">
-                        <a href="${pageContext.request.contextPath}/controller?page=2">2</a>
-                        <a href="${pageContext.request.contextPath}/controller?page=3">3</a>...
-                    </c:when>
-                    <c:otherwise>
-                        <c:choose>
-                            <c:when test="${requestScope.currentPage eq requestScope.numberOfPages}">
-                                ...<a href="${pageContext.request.contextPath}/controller?page=${requestScope.currentPage-1}">
-                                ${requestScope.currentPage-1}</a>
-                            </c:when>
-                            <c:otherwise>
-                                <c:choose>
-                                    <c:when test="${requestScope.currentPage eq (requestScope.numberOfPages-1)}">
-                                        ...<a href="${pageContext.request.contextPath}/controller?page=${requestScope.currentPage-1}">
-                                        ${requestScope.currentPage-1}</a>
-                                        <a href="${pageContext.request.contextPath}/controller?page=${requestScope.currentPage}">
-                                                ${requestScope.currentPage}</a>
-                                    </c:when>
-                                    <c:otherwise>
-                                        ...<a href="${pageContext.request.contextPath}/controller?page=${requestScope.currentPage-1}">
-                                        ${requestScope.currentPage-1}</a>
-                                        <a href="${pageContext.request.contextPath}/controller?page=${requestScope.currentPage}">
-                                                ${requestScope.currentPage}</a>
-                                        <a href="${pageContext.request.contextPath}/controller?page=${requestScope.currentPage+1}">
-                                                ${requestScope.currentPage+1}</a>...
-                                    </c:otherwise>
-                                </c:choose>
-                            </c:otherwise>
-                        </c:choose>
-                    </c:otherwise>
-                </c:choose>
-            </c:otherwise>
-        </c:choose>
-        <a href="${pageContext.request.contextPath}/controller?page=${requestScope.numberOfPages}">${requestScope.numberOfPages}</a>
-    </form>
+    <c:choose>
+        <c:when test="${requestScope.list.numberOfPages lt 4}">
+            <c:forEach begin="1" end="${requestScope.list.numberOfPages}" varStatus="loop">
+                <a href="${pageContext.request.contextPath}/controller?page=${loop.index}&parser=${requestScope.parser}">${loop.index}</a>
+            </c:forEach>
+        </c:when>
+        <c:otherwise>
+            <a href="${pageContext.request.contextPath}/controller?page=1&parser=${requestScope.parser}">1</a>
+            <c:choose>
+                <c:when test="${requestScope.list.currentPage eq 1}">
+                    <a href="${pageContext.request.contextPath}/controller?page=2&parser=${requestScope.parser}">2</a>...
+                </c:when>
+                <c:when test="${requestScope.list.currentPage eq 2}">
+                    <a href="${pageContext.request.contextPath}/controller?page=2&parser=${requestScope.parser}">2</a>
+                    <a href="${pageContext.request.contextPath}/controller?page=3&parser=${requestScope.parser}">3</a>
+                    <c:if test="${(requestScope.list.numberOfPages - requestScope.list.currentPage) gt 2}">...</c:if>
+                </c:when>
+                <c:otherwise>
+                    <c:choose>
+                        <c:when test="${requestScope.list.currentPage eq requestScope.list.numberOfPages}">
+                            <c:if test="${requestScope.list.numberOfPages gt 4}">...</c:if>
+                            <a href="${pageContext.request.contextPath}/controller?page=${requestScope.list.currentPage-1}&parser=${requestScope.parser}">
+                            ${requestScope.list.currentPage-1}</a>
+                        </c:when>
+                        <c:otherwise>
+                            <c:choose>
+                                <c:when test="${requestScope.list.currentPage eq (requestScope.list.numberOfPages-1)}">
+                                    <c:if test="${requestScope.list.currentPage gt 3}">...</c:if>
+                                    <a href="${pageContext.request.contextPath}/controller?page=${requestScope.list.currentPage-1}&parser=${requestScope.parser}">
+                                    ${requestScope.list.currentPage-1}</a>
+                                    <a href="${pageContext.request.contextPath}/controller?page=${requestScope.list.currentPage}&parser=${requestScope.parser}">
+                                            ${requestScope.list.currentPage}</a>
+                                </c:when>
+                                <c:otherwise>
+                                    <c:if test="${requestScope.list.currentPage gt 3}">...</c:if>
+                                    <a href="${pageContext.request.contextPath}/controller?page=${requestScope.list.currentPage-1}&parser=${requestScope.parser}">
+                                    ${requestScope.list.currentPage-1}</a>
+                                    <a href="${pageContext.request.contextPath}/controller?page=${requestScope.list.currentPage}&parser=${requestScope.parser}">
+                                            ${requestScope.list.currentPage}</a>
+                                    <a href="${pageContext.request.contextPath}/controller?page=${requestScope.list.currentPage+1}&parser=${requestScope.parser}">
+                                            ${requestScope.list.currentPage+1}</a>
+                                    <c:if test="${(requestScope.list.numberOfPages - requestScope.list.currentPage)gt 2}">...</c:if>
+                                </c:otherwise>
+                            </c:choose>
+                        </c:otherwise>
+                    </c:choose>
+                </c:otherwise>
+            </c:choose>
+            <a href="${pageContext.request.contextPath}/controller?page=${requestScope.list.numberOfPages}&parser=${requestScope.parser}">${requestScope.list.numberOfPages}</a>
+        </c:otherwise>
+    </c:choose>
 </div>
 </body>
 </html>
