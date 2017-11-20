@@ -1,6 +1,6 @@
 package by.epam.tr.dao;
 
-import by.epam.tr.dao.impl.domParser.DOMParser;
+import by.epam.tr.dao.impl.domParser.MyDOMParser;
 import by.epam.tr.dao.impl.saxParser.SAXParser;
 import by.epam.tr.dao.impl.staxParser.StAXParser;
 
@@ -9,7 +9,7 @@ public class DAOFactory {
 
     private Parser saxParser = new SAXParser();
     private Parser staxParser = new StAXParser();
-    private Parser domParser = new DOMParser();
+    private Parser domParser = new MyDOMParser();
 
     private DAOFactory() {
     }

@@ -14,6 +14,7 @@
         <servlet-api.version>2.5</servlet-api.version>
         <junit.version>4.12</junit.version>
         <jstl.version>1.2</jstl.version>
+        <xerces.version>2.4.0</xerces.version>
     </properties>
 
     <dependencies>
@@ -32,6 +33,17 @@
             <artifactId>jstl</artifactId>
             <version>${jstl.version}</version>
         </dependency>
+        <dependency>
+            <groupId>xerces</groupId>
+            <artifactId>xerces</artifactId>
+            <version>${xerces.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>xerces</groupId>
+            <artifactId>xercesImpl</artifactId>
+            <version>2.9.1</version>
+        </dependency>
+
     </dependencies>
 
     <build>
