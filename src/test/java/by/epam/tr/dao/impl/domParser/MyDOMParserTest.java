@@ -10,6 +10,7 @@ public class MyDOMParserTest {
         Parser domParser = new MyDOMParser();
         domParser.setCurrentPage(1);
         System.out.println(domParser.parse().getEntity());
+
     }
 
 
