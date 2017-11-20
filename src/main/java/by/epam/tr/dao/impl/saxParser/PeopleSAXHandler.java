@@ -10,6 +10,10 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class PeopleSAXHandler extends DefaultHandler {
+
+    private static final String PERSON = "person";
+    private static final String ID = "id";
+
     private List<Person> personList = new ArrayList<>();
     private Person person;
     private StringBuilder text;
@@ -21,9 +25,9 @@ public class PeopleSAXHandler extends DefaultHandler {
     @Override
     public void startElement(String uri, String localName, String qName, Attributes attributes) throws SAXException {
         text = new StringBuilder();
-        if (qName.equals("person")) {
+        if (qName.equals(PERSON)) {
             person = new Person();
-            person.setId(Integer.parseInt(attributes.getValue("id")));
+            person.setId(Integer.parseInt(attributes.getValue(ID)));
         }
     }
 

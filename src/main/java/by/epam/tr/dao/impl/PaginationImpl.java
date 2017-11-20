@@ -8,16 +8,10 @@ import java.util.List;
 
 public class PaginationImpl implements Pagination {
 
-    private int currentPage;
-
     private static final int MAX_ENTRIES_PER_PAGE = 5;
 
-    public void setCurrentPage(int currentPage) {
-        this.currentPage = currentPage;
-    }
-
     @Override
-    public Page<Person> getAllPageInformation(List<Person> list) {
+    public Page<Person> getAllPageInformation(List<Person> list,int currentPage) {
         Page<Person> page = new Page<>();
         page.setCurrentPage(currentPage);
         int numberOfPages = getPage(list, MAX_ENTRIES_PER_PAGE);

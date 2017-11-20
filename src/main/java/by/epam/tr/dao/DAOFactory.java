@@ -5,6 +5,11 @@ import by.epam.tr.dao.impl.saxParser.SAXParser;
 import by.epam.tr.dao.impl.staxParser.StAXParser;
 
 public class DAOFactory {
+    private static final String SAX = "SAX";
+    private static final String STAX = "STAX";
+    private static final String DOM = "DOM";
+
+
     private static DAOFactory instance = new DAOFactory();
 
     private Parser saxParser = new SAXParser();
@@ -21,11 +26,11 @@ public class DAOFactory {
     public Parser getParser(String type) {
         type = type.toUpperCase();
         switch (type) {
-            case "SAX":
+            case SAX:
                 return saxParser;
-            case "STAX":
+            case STAX:
                 return staxParser;
-            case "DOM":
+            case DOM:
                 return domParser;
         }
         return null;

@@ -1,10 +1,10 @@
 package by.epam.tr.dao;
 
 import by.epam.tr.dao.exception.ParserException;
-import by.epam.tr.entity.Page;
 import by.epam.tr.entity.Person;
 
+import java.util.List;
+
 public interface Parser {
-    Page<Person> parse() throws ParserException;
-    void setCurrentPage(int currentPage);
+    List<Person> parseXML() throws ParserException;
 }

@@ -1,10 +1,7 @@
 package by.epam.tr.dao.impl.staxParser;
 
-import by.epam.tr.dao.Pagination;
 import by.epam.tr.dao.Parser;
 import by.epam.tr.dao.exception.ParserException;
-import by.epam.tr.dao.impl.PaginationImpl;
-import by.epam.tr.entity.Page;
 import by.epam.tr.entity.Person;
 import by.epam.tr.entity.XMLTagName;
 
@@ -17,32 +14,24 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class StAXParser implements Parser {
+
     private static final String PEOPLE_XML = "people.xml";
-    private int currentPage;
+    private static final String ID = "id";
 
     @Override
-    public Page<Person> parse() throws ParserException {
+    public List<Person> parseXML() throws ParserException {
         XMLInputFactory xmlInputFactory = XMLInputFactory.newInstance();
         InputStream inputStream;
         try {
             inputStream = getClass().getClassLoader().getResourceAsStream(PEOPLE_XML);
 
             XMLStreamReader xmlStreamReader = xmlInputFactory.createXMLStreamReader(inputStream);
-            List<Person> listPerson = process(xmlStreamReader);
 
-            Pagination pagination = new PaginationImpl();
-            pagination.setCurrentPage(currentPage);
-
-            return pagination.getAllPageInformation(listPerson);
+            return process(xmlStreamReader);
 
         } catch (XMLStreamException e) {
             throw new ParserException(e);
         }
-    }
-
-    @Override
-    public void setCurrentPage(int currentPage) {
-        this.currentPage = currentPage;
     }
 
     private List<Person> process(XMLStreamReader reader) throws XMLStreamException {
@@ -57,7 +46,7 @@ public class StAXParser implements Parser {
                     switch (elementName) {
                         case PERSON:
                             person = new Person();
-                            Integer id = Integer.parseInt(reader.getAttributeValue(null, "id"));
+                            Integer id = Integer.parseInt(reader.getAttributeValue(null, ID));
                             person.setId(id);
                             break;
                     }

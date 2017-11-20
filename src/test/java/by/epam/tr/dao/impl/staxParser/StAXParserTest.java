@@ -10,7 +10,7 @@ public class StAXParserTest {
     public void parse() throws Exception {
         Parser parser = new StAXParser();
         parser.setCurrentPage(1);
-        Page<Person> parse = parser.parse();
+        Page<Person> parse = parser.parseXML();
         System.out.println(parse.getEntity());
     }
 

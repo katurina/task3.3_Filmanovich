@@ -9,7 +9,7 @@ public class MyDOMParserTest {
     public void parse() throws Exception {
         Parser domParser = new MyDOMParser();
         domParser.setCurrentPage(1);
-        System.out.println(domParser.parse().getEntity());
+        System.out.println(domParser.parseXML().getEntity());
 
     }
 
